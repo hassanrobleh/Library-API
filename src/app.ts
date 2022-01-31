@@ -12,7 +12,6 @@ app.get('/', (req: Request, res: Response, next: NextFunction) => {
 })
 
 app.use((req: Request, res: Response, next: NextFunction) => {
-
     next(new createHttpError.NotFound())
 })
 
