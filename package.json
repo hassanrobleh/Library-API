@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "dev": "ts-node ./src/app.ts",
+    "dev": "ts-node-dev ./src/app.ts",
     "start": "node ./dist/app.js",
     "build": "tsc",
     "test": "jest --watchAll",
