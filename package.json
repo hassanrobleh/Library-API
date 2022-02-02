@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "dev": "ts-node-dev ./src/app.ts",
+    "dev": "ts-node-dev --respawn ./src/app.ts",
     "start": "node ./dist/app.js",
     "build": "tsc",
     "test": "jest --watchAll",
@@ -16,7 +16,10 @@
   "dependencies": {
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
-    "http-errors": "^2.0.0"
+    "http-errors": "^2.0.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.15.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",

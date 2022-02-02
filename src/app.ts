@@ -2,6 +2,7 @@ import express, {Request, Response, NextFunction, Application, ErrorRequestHandl
 import { Server } from 'http'
 import createHttpError from 'http-errors'
 import { config } from 'dotenv'
+import db from './config/database.config'
 
 config()
 
@@ -25,8 +26,12 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
 
 app.use(errorHandler)
 
-const PORT: Number = Number(process.env.PORT) || 3000
+// Models 
+db.sync().then(() => {
+    console.log('connect to db')
+})
 
+const PORT: Number = Number(process.env.PORT) || 3000
 const server: Server = app.listen(PORT, () => {
     console.log(`Server: Server is running at http://localhost:${PORT}`);
 })
