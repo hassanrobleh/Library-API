@@ -4,8 +4,10 @@ import db from "../config/database.config"
 
 interface UserAttributes {
     id: number
-    name: string
-    description: string
+    email: string
+    password: string
+    firstName: string
+    lastName: string
 }
 
 export class User extends Model<UserAttributes> {}
@@ -18,13 +20,21 @@ User.init(
             primaryKey: true,
             allowNull: false,
         },
-        name: {
+        email: {
             type: new DataTypes.STRING(128),
             allowNull: false,
         },
-        description: {
+        password: {
             type: new DataTypes.STRING(128),
-            allowNull: true,
+            allowNull: false,
+        },
+        firstName: {
+            type: new DataTypes.STRING(128),
+            allowNull: false,
+        },
+        lastName: {
+            type: new DataTypes.STRING(128),
+            allowNull: false,
         }
     },
     {
