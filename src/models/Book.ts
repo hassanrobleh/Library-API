@@ -1,6 +1,7 @@
 
 import { DataTypes, Model } from "sequelize"
-import db from "../config/database.config"
+import sequelizeConnection from "../db/config"
+
 
 interface BookAttributes {
     id: number
@@ -8,7 +9,9 @@ interface BookAttributes {
     description: string
 }
 
-export class Book extends Model<BookAttributes> {}
+export class Book extends Model<BookAttributes> {
+    
+}
 
 Book.init(
     {
@@ -28,7 +31,7 @@ Book.init(
         }
     },
     {
-        sequelize: db,
+        sequelize: sequelizeConnection,
         tableName: "Book",
     }
 )

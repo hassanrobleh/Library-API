@@ -1,7 +1,6 @@
-
 import { Sequelize } from "sequelize"
 
-const db = new Sequelize('library', 'root', 'root', {
+const sequelizeConnection = new Sequelize('library', 'root', 'root', {
     host: 'localhost',
     dialect: 'mysql',
     dialectOptions: {
@@ -10,4 +9,4 @@ const db = new Sequelize('library', 'root', 'root', {
     logging: false
 })
 
-export default db;
+export default sequelizeConnection;

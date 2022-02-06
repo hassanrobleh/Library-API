@@ -1,6 +1,6 @@
 
-import { DataTypes, Model } from "sequelize"
-import db from "../config/database.config"
+import { DataTypes, Model, Optional } from "sequelize"
+import db from "../db/config/database.config"
 
 interface UserAttributes {
     id: number
@@ -10,7 +10,11 @@ interface UserAttributes {
     lastName: string
 }
 
-export class User extends Model<UserAttributes> {}
+// interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
+
+export class User extends Model<UserAttributes> {
+    declare id: number
+}
 
 User.init(
     {
