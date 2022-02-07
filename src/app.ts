@@ -23,11 +23,11 @@ app.get('/', (req: Request, res: Response, next: NextFunction) => {
     res.send("Hello from ts app")
 })
 
-app.post('/api/book', (req, res) => {
-    console.log(req.body)
+// app.post('/api/book', (req, res) => {
+//     console.log(req.body)
 
-    return res.send('')
-})
+//     return res.send('')
+// })
 
 // app.use((req: Request, res: Response, next: NextFunction) => {
 //     next(new createHttpError.NotFound())
