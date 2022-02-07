@@ -1,9 +1,9 @@
 import {Op} from 'sequelize'
 import Book from "../models/Book"
-import {BookInput, BookOuput} from "../models/Book"
+// import {BookInput, BookOuput} from "../models/Book"
 
-export const create = async (payload: BookInput): Promise<BookOuput> => {
-    const book = await Book.create()
+export const create = async (book:any) => {
+    const newBook = await Book.create(book)
     return book
 }
 
