@@ -1,14 +1,18 @@
 import express, {Request, Response, NextFunction, Application, ErrorRequestHandler} from 'express'
+import cors from "cors"
 import { Server } from 'http'
 import createHttpError from 'http-errors'
-import { config } from 'dotenv'
-import db from "./db/config"
+// import { config } from 'dotenv'
+import dbInit from './db/init'
 
-config()
+dbInit()
+
+// config()
 const app: Application = express()
 const PORT: Number = Number(process.env.PORT) || 3000
 
 // Middleware
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
@@ -35,9 +39,9 @@ app.post('/api/book', (req, res) => {
 // }
 // app.use(errorHandler)
 
-db.sync().then(() => {
-    console.log('connect to db')
-})
+// db.sync().then(() => {
+//     console.log('connect to db')
+// })
 
 const server: Server = app.listen(PORT, () => {
     console.log(`Server: Server is running at http://localhost:${PORT}`);
