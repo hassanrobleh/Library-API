@@ -16,12 +16,12 @@ const PORT: Number = Number(process.env.PORT) || 3000
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use('/api/v1', routes)
+app.use(routes)
 
 // Routes
-app.get('/', (req: Request, res: Response, next: NextFunction) => {
-    res.send("Hello from ts app")
-})
+// app.get('/', (req: Request, res: Response, next: NextFunction) => {
+//     res.send("Hello from ts app")
+// })
 
 // app.post('/api/book', (req, res) => {
 //     console.log(req.body)
