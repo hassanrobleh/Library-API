@@ -1,8 +1,12 @@
-import { Request, Response } from 'express'
+import { Request, Response, NextFunction } from 'express'
 import {bookCreate} from '../services/Book'
 
-export const createBook = async (req: Request, res: Response) => {
+export const createBook = async (req: Request, res: Response, next: NextFunction) => {
     const body = req.body
-    const result = await bookCreate({...body})
-    return res.status(200).send(result)
+    try {
+        const result = await bookCreate({...body})
+        return res.status(201).send(result)
+    } catch (e) {
+        next(e)
+    }
 }
