@@ -1,6 +1,7 @@
 
 import { DataTypes, Model, Optional } from "sequelize"
-import db from "../db/config/database.config"
+// import db from "../db/config/database.config"
+import db from "../db/config"
 
 interface UserAttributes {
     id: number
@@ -46,3 +47,5 @@ User.init(
         tableName: "User",
     }
 )
+
+export default User

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
-import {bookCreate} from '../services/Book'
+import {bookCreate} from '../services/User'
 
-export const createBook = async (req: Request, res: Response, next: NextFunction) => {
+export const createUser = async (req: Request, res: Response, next: NextFunction) => {
     const body = req.body
     try {
         const result = await bookCreate({...body})
