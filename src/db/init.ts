@@ -1,9 +1,9 @@
 
-// require('dotenv').config()
-import { config } from 'dotenv'
+require('dotenv').config()
+// import { config } from 'dotenv'
 
-import { Book } from '../models/Book'
-import { User } from '../models/User'
+import { Book, User } from '../models'
+// import { User } from '../models/User'
 
 
 const isDev = process.env.NODE_ENV === 'development'

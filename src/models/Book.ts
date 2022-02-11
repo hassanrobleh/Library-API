@@ -8,13 +8,15 @@ interface BookAttributes {
     name: string
     slug: string
     description: string
+    createdAt?: Date;
+    updatedAt?: Date;
+    deletedAt?: Date;
 }
 
 export interface BookInput extends Optional<BookAttributes, 'id' | 'slug'> {}
-
 export interface BookOuput extends Required<BookAttributes> {}
 
-export class Book extends Model<BookAttributes> {
+class Book extends Model<BookAttributes, BookInput> implements BookAttributes{
     public id!: number
     public name!: string
     public slug!: string
