@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import {bookCreate} from '../services/Book'
+import {bookCreate, getBookById} from '../services/Book'
 
 export const createBook = async (req: Request, res: Response, next: NextFunction) => {
     const body = req.body
@@ -9,4 +9,11 @@ export const createBook = async (req: Request, res: Response, next: NextFunction
     } catch (e) {
         next(e)
     }
+}
+
+export const getById = async (req: Request, res: Response, next: NextFunction) => {
+    const id = Number(req.params.id)
+    const result =  await getBookById(id)
+    return res.status(200).send(result)
+    // return bookByid
 }
