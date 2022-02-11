@@ -17,13 +17,9 @@ export const getBookById = async (id: number): Promise<BookOuput> => {
     return book
 }
 
-export const getAllBook = async (filters?: GetAllBookFilters): Promise<BookOuput[]> => {
-    return Book.findAll({
-        where: { 
-            ...(filters?.isDeleted && {deletedAt: {[Op.not]: null}})
-        },
-        ...((filters?.isDeleted || filters?.includeDeleted) && {paranoid: true})
-    })
+export const getAllBook = async (): Promise<BookOuput[]> => {
+    const allBook = await Book.findAll()
+    return allBook
 }
 
 export const update = async () => {
