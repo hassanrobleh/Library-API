@@ -18,7 +18,21 @@ export const getById = async (req: Request, res: Response, next: NextFunction) =
 }
 
 export const getAll = async (req: Request, res: Response, next: NextFunction) => {
+
     // const name = req.query.name
-    const results = await getAllBook()
-    return res.status(200).json(results)
+    // const results = await getAllBook(name)
+    // const message = `La liste book a bien été récupérée`
+    // return res.status(200).json({message, data:results})
+
+
+    const name = req.query.name
+    if(req.query.name) {
+        const results = await getAllBook(name)
+        const message = ` Il y a ${results.length} books qui correspondent au terme de recherche ${name}`
+        return res.json({message, data: results})
+    } else {
+        const results = await getAllBook()
+        const message = `La liste book a bien été récupérée`
+        return res.status(200).json({message, data:results})
+    }
 }
