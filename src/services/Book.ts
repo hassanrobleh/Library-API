@@ -30,13 +30,13 @@ export const getAllBook = async (name?: string | object): Promise<BookOutput[]> 
     
 }
 
-export const update = async (id: number, book: any): Promise<BookOutput> => {
+export const bookUpdate = async (id: number, book: any): Promise<BookOutput> => {
     const bookId = await Book.findByPk(id)
     if(!bookId) {
         throw new Error('not found')
     }
 
-    const bookUpdate = bookId.update(book)
+    const bookUpdate = bookId.update(book, {where: {id: bookId}})
     return bookUpdate
 }
 
