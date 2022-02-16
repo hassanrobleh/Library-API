@@ -23,8 +23,6 @@ export const getAll = async (req: Request, res: Response, next: NextFunction) =>
     // const results = await getAllBook(name)
     // const message = `La liste book a bien été récupérée`
     // return res.status(200).json({message, data:results})
-
-
     const name = req.query.name
     if(req.query.name) {
         const results = await getAllBook(name)
@@ -35,4 +33,12 @@ export const getAll = async (req: Request, res: Response, next: NextFunction) =>
         const message = `La liste book a bien été récupérée`
         return res.status(200).json({message, data:results})
     }
+}
+
+export const updateBook = async (req: Request, res: Response, next: NextFunction) => {
+    const id = Number(req.params.id)
+    const body = req.body
+
+    
+
 }

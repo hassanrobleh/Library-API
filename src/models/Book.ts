@@ -14,7 +14,7 @@ interface BookAttributes {
 }
 
 export interface BookInput extends Optional<BookAttributes, 'id' | 'slug'> {}
-export interface BookOuput extends Required<BookAttributes> {}
+export interface BookOutput extends Required<BookAttributes> {}
 
 class Book extends Model<BookAttributes, BookInput> implements BookAttributes{
     public id!: number
