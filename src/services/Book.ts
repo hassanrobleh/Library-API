@@ -41,6 +41,10 @@ export const bookUpdate = async (id: number, book: any): Promise<BookOutput> => 
 }
 
 export const bookDelete = async (id: number): Promise<boolean> => {
+    const bookId = await Book.findByPk(id)
+    if(!bookId) {
+        throw new Error(`Le Book demand' n'existe pas. Réessayez avec un autre identifiant.`)
+    }
     const deletedBookCount = await Book.destroy({
         where: {id}
     })

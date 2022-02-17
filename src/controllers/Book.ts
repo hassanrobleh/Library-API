@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import {bookCreate, getBookById, getAllBook, bookUpdate} from '../services/Book'
+import {bookCreate, getBookById, getAllBook, bookUpdate, bookDelete} from '../services/Book'
 
 export const createBook = async (req: Request, res: Response, next: NextFunction) => {
     const body = req.body
@@ -42,4 +42,9 @@ export const updateBook = async (req: Request, res: Response, next: NextFunction
     // console.log(result)
     const message = `Le pokémon ${result.name} a bien été modifié.`
     return res.json({message, data:result})
+}
+
+export const deleteBook = async (req: Request, res: Response, next: NextFunction) => {
+    const id = Number(req.params.id)
+    
 }
