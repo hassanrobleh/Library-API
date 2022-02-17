@@ -40,3 +40,10 @@ export const bookUpdate = async (id: number, book: any): Promise<BookOutput> => 
     return bookUpdate
 }
 
+export const bookDelete = async (id: number): Promise<boolean> => {
+    const deletedBookCount = await Book.destroy({
+        where: {id}
+    })
+    return !!deletedBookCount
+}
+
