@@ -40,14 +40,14 @@ export const bookUpdate = async (id: number, book: any): Promise<BookOutput> => 
     return bookUpdate
 }
 
-export const bookDelete = async (id: number): Promise<boolean> => {
-    const bookId = await Book.findByPk(id)
-    if(!bookId) {
-        throw new Error(`Le Book demand' n'existe pas. Réessayez avec un autre identifiant.`)
-    }
+export const bookDelete = async (id: number): Promise<any> => {
+    // const bookId = await Book.findByPk(id)  
+    // if(!bookId) {
+    //     throw new Error(`Le Book demand' n'existe pas. Réessayez avec un autre identifiant.`)
+    // }
     const deletedBookCount = await Book.destroy({
         where: {id}
     })
-    return !!deletedBookCount
+    return deletedBookCount
 }
 
