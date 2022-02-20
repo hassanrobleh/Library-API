@@ -48,6 +48,6 @@ export const deleteBook = async (req: Request, res: Response, next: NextFunction
     const id = Number(req.params.id)
     const result = await bookDelete(id)
     
-    const message = `Le book avec l'identifiant   n°${result} a bien été supprimé.`
+    const message = `Le book avec l'identifiant n°${result} a bien été supprimé.`
     return res.json({message, data: result})
 }

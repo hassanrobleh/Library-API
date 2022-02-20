@@ -2,7 +2,6 @@ import {Op} from 'sequelize'
 import {Book} from "../models"
 import { GetAllBookFilters } from "./types"
 import { BookInput, BookOutput } from '../models/Book'
-import { query } from 'express'
 
 export const bookCreate = async (book:Book): Promise<BookOutput> => {
     const newBook = await Book.create(book)
@@ -12,8 +11,7 @@ export const bookCreate = async (book:Book): Promise<BookOutput> => {
 export const getBookById = async (id: number): Promise<BookOutput> => {
     const book = await Book.findByPk(id)
     if (!book) {
-        // @todo throw custom error
-        throw new Error('not found')
+        throw new Error(`Le Book demande n'existe pas. Réessayez avec un autre identifiant.`)
     }
     return book
 }
@@ -33,7 +31,7 @@ export const getAllBook = async (name?: string | object): Promise<BookOutput[]> 
 export const bookUpdate = async (id: number, book: any): Promise<BookOutput> => {
     const bookId = await Book.findByPk(id)
     if(!bookId) {
-        throw new Error('not found')
+        throw new Error(`Le Book demande n'existe pas. Réessayez avec un autre identifiant.`)
     }
 
     const bookUpdate = bookId.update(book, {where: {id: bookId}})
@@ -41,13 +39,21 @@ export const bookUpdate = async (id: number, book: any): Promise<BookOutput> => 
 }
 
 export const bookDelete = async (id: number): Promise<any> => {
-    // const bookId = await Book.findByPk(id)  
-    // if(!bookId) {
-    //     throw new Error(`Le Book demand' n'existe pas. Réessayez avec un autre identifiant.`)
-    // }
-    const deletedBookCount = await Book.destroy({
-        where: {id}
-    })
-    return deletedBookCount
+    const bookId = await Book.findByPk(id)  
+    try {
+        if(!bookId) {
+            throw new Error(`Le Book demande n'existe pas. Réessayez avec un autre identifiant.`)
+        }
+
+        const deletedBook = await bookId.destroy()
+        return deletedBook
+        // console.log(id)
+        
+    } catch (e) {
+        console.log(e)
+    }
+    
+
+    
 }
 

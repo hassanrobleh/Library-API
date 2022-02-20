@@ -3,8 +3,8 @@ import { createBook, getById, getAll, updateBook, deleteBook } from '../controll
 
 const bookRouter = Router()
 
-bookRouter.get('/:id', getById)
 bookRouter.post('/', createBook)
+bookRouter.get('/:id', getById)
 bookRouter.get('/', getAll)
 bookRouter.put('/:id', updateBook)
 bookRouter.delete('/:id', deleteBook)
