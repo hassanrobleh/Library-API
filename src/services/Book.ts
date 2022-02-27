@@ -1,6 +1,5 @@
 import {Op} from 'sequelize'
 import {Book} from "../models"
-import { GetAllBookFilters } from "./types"
 import { BookInput, BookOutput } from '../models/Book'
 
 export const bookCreate = async (book:Book): Promise<BookOutput> => {

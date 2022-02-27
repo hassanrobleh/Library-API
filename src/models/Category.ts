@@ -5,20 +5,18 @@ import sequelizeConnection from "../db/config"
 interface CategoryAttributes {
     id: number
     name: string
-    slug: string
     description: string
     createdAt?: Date;
     updatedAt?: Date;
     deletedAt?: Date;
 }
 
-export interface CategoryInput extends Optional<CategoryAttributes, 'id' | 'slug'> {}
+export interface CategoryInput extends Optional<CategoryAttributes, 'id'> {}
 export interface CategoryOutput extends Required<CategoryAttributes> {}
 
 class Category extends Model<CategoryAttributes, CategoryInput> implements CategoryAttributes{
     public id!: number
     public name!: string
-    public slug!: string
     public description!: string
 
     // timestamps!
@@ -39,11 +37,7 @@ Category.init(
             type: new DataTypes.STRING(128),
             allowNull: false,
         },
-        slug: {
-            type: new DataTypes.STRING(128),
-            allowNull: false,
-            unique: true
-        },
+     
         description: {
             type: new DataTypes.STRING(128),
             allowNull: false,
