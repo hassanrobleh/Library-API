@@ -1,7 +1,10 @@
 # Library-API
 
+# Getting Started
+```bash
 $ git clone https://github.com/hassanrobleh/Library-API.git
-$ cd Hotel_API-Node-js
+$ cd Library-API
 $ npm install
 $ npm start
 $ http://localhost:
+```
