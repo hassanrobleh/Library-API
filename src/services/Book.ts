@@ -16,7 +16,6 @@ export const getBookById = async (id: number): Promise<BookOutput> => {
 }
 
 export const getAllBook = async (name?: string | object): Promise<BookOutput[]> => {
-    // const name = query.name
     if(name) {
         const allBook = await Book.findAll({where: {name: name}})
         return allBook
@@ -46,13 +45,8 @@ export const bookDelete = async (id: number): Promise<any> => {
 
         const deletedBook = await bookId.destroy()
         return deletedBook
-        // console.log(id)
-        
     } catch (e) {
         console.log(e)
     }
-    
-
-    
 }
 
